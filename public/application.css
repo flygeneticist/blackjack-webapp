@@ -1,0 +1,54 @@
+form#hit_form{
+  float: left;
+  margin-right: 25px;
+}
+
+form#stay_form{
+float: left;
+}
+
+form#newround_form{
+  float: left;
+  margin-right: 25px;
+}
+
+form#restart_form{
+float: left;
+}
+
+h1 {
+  padding-bottom: 10px;
+}
+
+div.hero-unit{
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+div#bust_alert{
+  padding-bottom: 45px;
+  margin-bottom: 20px;
+}
+
+div#score_alert{
+  padding-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+div#score_alert h2{
+  padding-bottom: 5px;
+}
+
+div#dealer_hand{
+  background-color: #D3D3D3;
+  padding: 0px 0px 10px 10px;
+  margin-bottom: 20px;
+}
+
+div#player_hand{
+  background-color: #D3D3D3;
+  padding: 0px 0px 10px 10px;
+  margin-bottom: 20px;
+}
+

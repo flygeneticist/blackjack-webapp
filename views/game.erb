@@ -1,0 +1,33 @@
+<div class="hero-unit">
+  <div id="dealer_hand">
+    <h3>Dealer's hand: </h3>
+    <%if session[:player_stand] %>
+      <p>Totals: <%= evaluate_hand(session[:dealer_hand])%></p>
+      <% session[:dealer_hand].each do |card| %>
+        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_").to_s %>.jpg">
+      <%end%>
+    <%else%>
+      <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= session[:dealer_hand][0].join("_").to_s %>.jpg">
+    <%end%>
+  </div>
+
+  <div id="player_hand">
+    <h3><%= session[:player] %>'s hand: </h3>
+      <p>Totals: <%= evaluate_hand(session[:player_hand])%></p>
+      <% session[:player_hand].each do |card| %>
+        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_").to_s %>.jpg">
+      <% end %>
+  </div>
+
+  <% if session[:player_buttons] %>
+    <div id="controls" class="offset1">
+      <form id="hit_form" action="/game/player/hit" method="post">
+        <button class="btn btn-primary btn-large" href="">HIT</button>
+      </form>
+      <form id="stay_form" action="/game/player/stay" method="post">
+        <button class="btn btn-warning btn-large" href="">STAY</button>
+      </form>
+    </div>
+  <% end %>
+
+</div>

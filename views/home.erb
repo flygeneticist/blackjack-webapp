@@ -1,0 +1,59 @@
+<div class='hero-unit'>
+  <h1 class="text-center">Experience Blackjack Like You Never Have Before!</h1>
+  <p>Boasting many cutting edge features such as:</p>
+  <ul>
+    <li>Casino-style of play</li>
+    <li>Smart AI dealers</li>
+    <li>Realistic graphics</li>
+  </ul>
+    You'll swear you were sitting right in a real live casino!</p>
+  <p>
+    <a href="#nameModal" role="button" class="btn btn-primary btn-large" data-toggle="modal">Let's Get Started!</a>
+  </p>
+</div>
+
+<!-- name_modal -->
+<div id="nameModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="nameModalLabel">Game Settings</h3>
+  </div>
+  <div class="modal-body">
+    <form name="gamesettings" method="post" action="/load">
+      <p>Minimum table bid:
+        <select class="input-small" name="minbid" onChange="">
+          <option>$1</option>
+          <option>$5</option>
+          <option>$10</option>
+          <option>$25</option>
+          <option>$100</option>
+        </select></p>
+      <p>Maximum table bid:
+        <select class="input-small" name="maxbid" onChange="">
+          <option>$100</option>
+          <option>$250</option>
+          <option>$500</option>
+          <option>$1,000</option>
+          <option>$5,000</option>
+        </select></p>
+      <p>Starting bankroll:
+        <select class="input-small" name="bankroll" onChange="">
+          <option>$5,000</option>
+          <option>$10,000</option>
+          <option>$50,000</option>
+          <option>$100,000</option>
+          <option>$500,000</option>
+        </select></p>
+
+      <p>Player Names: </p>
+      <div id="extender">
+        Player 1 <input type="text" name="player"></input>
+        <a id="add" href="#">Add</a> / <a id="remove" href="#">Delete</a>
+        <p>*(Add/Delete Not Working Yet!)</p>
+      </div>
+      <p class="text-center">
+      <button type='submit' class="btn btn-large btn-danger">START!</button>
+    </p>
+    </form>
+  </div>
+</div>
