@@ -7,6 +7,7 @@
         <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_") %>.jpg">
       <%end%>
     <%else%>
+      <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/cover.jpg">
       <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= session[:dealer_hand][0].join("_") %>.jpg">
     <%end%>
   </div>
