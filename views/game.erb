@@ -4,10 +4,10 @@
     <%if session[:player_stand] %>
       <p>Totals: <%= evaluate_hand(session[:dealer_hand])%></p>
       <% session[:dealer_hand].each do |card| %>
-        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_").to_s %>.jpg">
+        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_") %>.jpg">
       <%end%>
     <%else%>
-      <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= session[:dealer_hand][0].join("_").to_s %>.jpg">
+      <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= session[:dealer_hand][0].join("_") %>.jpg">
     <%end%>
   </div>
 
@@ -15,7 +15,7 @@
     <h3><%= session[:player] %>'s hand: </h3>
       <p>Totals: <%= evaluate_hand(session[:player_hand])%></p>
       <% session[:player_hand].each do |card| %>
-        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_").to_s %>.jpg">
+        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_") %>.jpg">
       <% end %>
   </div>
 

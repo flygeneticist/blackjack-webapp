@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
-set :sessions_secret, true
+set :sessions, true
 
 helpers do
   def take_a_turn (hand)
