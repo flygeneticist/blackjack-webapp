@@ -18,6 +18,7 @@
       <% session[:player_hand].each do |card| %>
         <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_") %>.jpg">
       <% end %>
+    <p style="padding-top: 5px;">Wagering <b>$<%=session[:wager]%></b> this round, with <b><%=session[:bankroll]%></b> in the bank.</p>
   </div>
 
   <% if session[:player_buttons] %>

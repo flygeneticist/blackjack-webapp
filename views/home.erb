@@ -19,35 +19,51 @@
     <h3 id="nameModalLabel">Game Settings</h3>
   </div>
   <div class="modal-body">
-    <form name="gamesettings" method="post" action="/load">
-      <p>Minimum table bid:
-        <select class="input-small" name="minbid" onChange="">
-          <option>$1</option>
-          <option>$5</option>
-          <option>$10</option>
-          <option>$25</option>
-          <option>$100</option>
-        </select></p>
-      <p>Maximum table bid:
-        <select class="input-small" name="maxbid" onChange="">
-          <option>$100</option>
-          <option>$250</option>
-          <option>$500</option>
-          <option>$1,000</option>
-          <option>$5,000</option>
-        </select></p>
-      <p>Starting bankroll:
-        <select class="input-small" name="bankroll" onChange="">
-          <option>$5,000</option>
-          <option>$10,000</option>
-          <option>$50,000</option>
-          <option>$100,000</option>
-          <option>$500,000</option>
-        </select></p>
-
-      <p>Player Names: </p>
+    <form name="gamesettings" method="post" action="/">
+    <div id="table-limits">
+      <h5>Minimum table bid: </h5>
+      <div id="min-limit" class="input-prepend">
+        <span class="add-on">$</span>
+        <select class="input-small" id="input-prepend" name="minbid" onChange="">
+          <option>1</option>
+          <option>5</option>
+          <option>10</option>
+          <option>25</option>
+          <option>100</option>
+        </select>
+      </div>
+      <br>
+      <h5>Maximum table bid: </h5>
+      <div id="max-limit" class="input-prepend">
+        <span class="add-on">$</span>
+        <select class="input-small" id="input-prepend" name="maxbid" onChange="">
+          <option>100</option>
+          <option>250</option>
+          <option>500</option>
+          <option>1000</option>
+        </select>
+      </div>
+      <br>
+    </div>
+      <h5>Starting bankroll:</h5>
+      <div id="starting-bankroll" class="input-prepend">
+        <span class="add-on">$</span>
+        <select class="input-small" id="input-prepend" name="bankroll" onChange="">
+          <option>1000</option>
+          <option>5000</option>
+          <option>10000</option>
+          <option>50000</option>
+        </select>
+      </div>
+      <br>
+      <h5>Player Names / Initial Wager: </h5>
       <div id="extender">
-        Player 1 <input type="text" name="player"></input>
+        Player 1 <input class="input-small" type="text" name="player" placeholder="Name">
+        <div id="wager-input" class="input-append input-prepend">
+          <span class="add-on">$</span>
+          <input class="input-small" id="input-append input-prepend" type="text" name="wager" placeholder="100">
+          <span class="add-on">.00</span>
+        </div>
         <a id="add" href="#">Add</a> / <a id="remove" href="#">Delete</a>
         <p>*(Add/Delete Not Working Yet!)</p>
       </div>

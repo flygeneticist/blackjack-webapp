@@ -65,12 +65,13 @@ get '/logout' do # clear cookies after game is ended
   redirect "/"
 end
 
-post "/load" do # set up game vars and the deck
+post "/" do # set up game vars and the deck
   session[:minbid] = params[:minbid]
   session[:maxbid] = params[:maxbid]
   session[:bankroll] = params[:bankroll]
   session[:playercount] = params[:playercount]
   session[:player] = params[:player]
+  session[:wager] = params[:wager]
   redirect "/newround"
 end
 
