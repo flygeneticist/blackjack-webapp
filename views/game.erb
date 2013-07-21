@@ -18,16 +18,18 @@
       <% session[:player_hand].each do |card| %>
         <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_") %>.jpg">
       <% end %>
-    <p style="padding-top: 5px;">Wagering <b>$<%=session[:wager]%></b> this round, with <b><%=session[:bankroll]%></b> in the bank.</p>
+    <%if @scores == false %>
+      <p style="padding-top: 5px;">Wagering <b>$<%=session[:wager]%></b> this round, with <b>$<%=session[:bankroll]%></b> in the bank.</p>
+    <%end%>
   </div>
 
   <% if session[:player_buttons] %>
     <div id="controls" class="offset1">
       <form id="hit_form" action="/game/player/hit" method="post">
-        <button class="btn btn-primary btn-large" href="">HIT</button>
+        <button id='hit_button' class="btn btn-primary btn-large" href="">HIT</button>
       </form>
       <form id="stay_form" action="/game/player/stay" method="post">
-        <button class="btn btn-warning btn-large" href="">STAY</button>
+        <button id='stay_button' class="btn btn-warning btn-large" href="">STAY</button>
       </form>
     </div>
   <% end %>

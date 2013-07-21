@@ -40,14 +40,20 @@
     <% end %>
 
     <%if @scores %>
-      <div id="score_alert" class="alert">
-        <h2>The Results Are In!</h2>
-        <p style="font-size: 1.5em;">The dealer has <%= @dealer_results %>!</p>
-        <p style="font-size: 1.5em;"><%=session[:player]%> has <%= @player_results %>!</p>
+      <%if @scores == "Blackjack!" %>
+        <div id="score_alert" class="alert">
+          <h2>BLACKJACK!</h2>
+          <p style="font-size: 1.5em;"><%=session[:player]%> has won $<%=session[:wager]%>.</p>
+      <%else%>
+        <div id="score_alert" class="alert">
+          <h2>The Results Are In!</h2>
+          <p style="font-size: 1.5em;">The dealer has <%= @dealer_results %>.</p>
+          <p style="font-size: 1.5em;"><%=session[:player]%> has <%= @player_results %> $<%=session[:wager]%>.</p>
+      <% end %>
         <br>
         <p>What do you want to do next?</p>
-        <form id="newround_form" action="/newround" method="get">
-          <button class="btn btn-success">New Game</button>
+        <form id="newround_form">
+          <a id="newround" role="button" href="#wagerModal" data-toggle="modal" class="btn btn-success">New Game</a>
         </form>
         <form id="restart_form" action="/" method="get">
           <button class="btn btn-inverse">Home</button>
@@ -59,3 +65,23 @@
   </div>
   </body>
 </html>
+
+<!-- wagermodal -->
+<div id="wagerModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="wagerModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="wagerModalLabel">New Round</h3>
+  </div>
+  <div class="modal-body">
+    <h4>New Wager: </h4>
+    <form name="newround_wager" method="post" action="/newround">
+      <div id="wager-div" class="input-append input-prepend">
+        <span class="add-on">$</span>
+        <input class="input-small" id="input-append input-prepend" type="text" name="wager">
+        <span class="add-on">.00</span>
+      </div>
+      <br>
+      <button type='submit' class="btn btn-large btn-danger">START!</button>
+    </form>
+  </div>
+</div>
