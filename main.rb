@@ -119,9 +119,7 @@ post "/game/player/stay" do
   session[:player_stand] = true
   session[:player_buttons] = false
   if session[:player_hand].length == 2 && session[:player_finalvalue] == 21
-      @scores = "Blackjack!"
-      session[:wager] = (1.5 * session[:wager])
-      session[:bankroll] += session[:wager]
+      @special = true
       redirect "/game/settle"
   else
       redirect "/game/dealer"
@@ -149,7 +147,11 @@ get "/game/dealer/hit" do
 end
 
 get "/game/settle" do
-  if @scores && @scores != "Blackjack!"
+  @scores = true
+  if @special == true
+    session[:wager] = (1.5 * session[:wager]).to_i
+    session[:bankroll] += session[:wager]
+  else
     if session[:dealer_finalvalue] > 21 && session[:player_finalvalue] <= 21
       @player_results, @dealer_results = "won", "busted"
       session[:bankroll] += session[:wager]

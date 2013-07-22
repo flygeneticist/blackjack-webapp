@@ -1,3 +1,15 @@
+input {
+  padding:5px;
+  border:1px solid #999;
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -web-kit-border-radius:4px;
+}
+
+#home_picture {
+  margin: 10px 0px 10px 0px;
+}
+
 form#hit_form{
   float: left;
   margin-right: 25px;
@@ -27,12 +39,12 @@ div.hero-unit{
 }
 
 div#bust_alert{
-  padding-bottom: 45px;
+  padding-bottom: 40px;
   margin-bottom: 20px;
 }
 
 div#score_alert{
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   margin-bottom: 20px;
 }
 
@@ -52,3 +64,6 @@ div#player_hand{
   margin-bottom: 20px;
 }
 
+.hero-unit {
+padding: 50px;
+}

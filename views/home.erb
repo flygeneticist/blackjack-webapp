@@ -1,15 +1,19 @@
 <div class='hero-unit'>
   <h1 class="text-center">Experience Blackjack Like You Never Have Before!</h1>
-  <p>Boasting many cutting edge features such as:</p>
+  <div id='home_picture' class="text-center">
+    <img src="/images/blackjack_home.jpg" alt="blackjack picture" height="400" width="600">
+  </div>
+  <h3>Boasting many cutting edge features such as:</h3>
   <ul>
-    <li>Casino-style of play</li>
-    <li>Smart AI dealers</li>
-    <li>Realistic graphics</li>
+    <li><h4>Casino-style of play</h4></li>
+    <li><h4>Smart AI dealers</h4></li>
+    <li><h4>Realistic graphics</h4></li>
   </ul>
-    You'll swear you were sitting right in a real live casino!</p>
-  <p>
+  <br>
+  <div class="text-center">
+    <h3>You'll swear you were sitting right in a <em>real live casino</em>!</h3>
     <a href="#nameModal" role="button" class="btn btn-primary btn-large" data-toggle="modal">Let's Get Started!</a>
-  </p>
+  </div>
 </div>
 
 <!-- name_modal -->
@@ -24,7 +28,7 @@
       <h5>Minimum table bid: </h5>
       <div id="min-limit" class="input-prepend">
         <span class="add-on">$</span>
-        <select class="input-small" id="input-prepend" name="minbid" onChange="">
+        <select class="input-small" id="input-prepend" name="minbid" autofocus>
           <option>1</option>
           <option>5</option>
           <option>10</option>
@@ -36,7 +40,7 @@
       <h5>Maximum table bid: </h5>
       <div id="max-limit" class="input-prepend">
         <span class="add-on">$</span>
-        <select class="input-small" id="input-prepend" name="maxbid" onChange="">
+        <select class="input-small" id="input-prepend" name="maxbid">
           <option>100</option>
           <option>250</option>
           <option>500</option>
@@ -62,9 +66,8 @@
         <div id="wager-input" class="input-append input-prepend">
           <span class="add-on">$</span>
           <input class="input-small" id="input-append input-prepend" type="text" name="wager" placeholder="100">
-          <span class="add-on">.00</span>
         </div>
-        <a id="add" href="#">Add</a> / <a id="remove" href="#">Delete</a>
+        <a id="add" href="#">Add</a> / <a id="remove" href="#">Remove</a>
         <p>*(Add/Delete Not Working Yet!)</p>
       </div>
       <p id="start_button" class="text-center">

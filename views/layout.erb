@@ -25,42 +25,28 @@
     </div>
 
   <div class="container">
+  <%if @scores %>
     <%if @error %>
       <div id="bust_alert" class="alert alert-error">
         <!-- bust -->
         <h2><%= @error%> has busted!</h2>
-        <p>What do you want to do next?</p>
-        <form id="newround_form" action="/newround" method="get">
-          <button class="btn btn-success">New Game</button>
-        </form>
-        <form id="restart_form" action="/" method="get">
-          <button class="btn btn-inverse">Home</button>
-        </form>
-      </div>
+    <%elsif @special %>
+      <div id="score_alert" class="alert">
+        <h2>BLACKJACK!</h2>
+        <h3><%=session[:player]%> won $<%=session[:wager]%>.</h3>
+    <%elsif @scores %>
+      <div id="score_alert" class="alert">
+        <h3><%=session[:player]%> <%= @player_results %> $<%=session[:wager]%>.</h3>
     <% end %>
-
-    <%if @scores %>
-      <%if @scores == "Blackjack!" %>
-        <div id="score_alert" class="alert">
-          <h2>BLACKJACK!</h2>
-          <p style="font-size: 1.5em;"><%=session[:player]%> has won $<%=session[:wager]%>.</p>
-      <%else%>
-        <div id="score_alert" class="alert">
-          <h2>The Results Are In!</h2>
-          <p style="font-size: 1.5em;">The dealer has <%= @dealer_results %>.</p>
-          <p style="font-size: 1.5em;"><%=session[:player]%> has <%= @player_results %> $<%=session[:wager]%>.</p>
-      <% end %>
-        <br>
-        <p>What do you want to do next?</p>
-        <form id="newround_form">
-          <a id="newround" role="button" href="#wagerModal" data-toggle="modal" class="btn btn-success">New Game</a>
-        </form>
-        <form id="restart_form" action="/" method="get">
-          <button class="btn btn-inverse">Home</button>
-        </form>
-      </div>
-    <% end %>
-
+    <h4 style="margin-bottom: 5px;">What do you want to do next?</h4>
+      <form id="newround_form">
+        <a id="newround" role="button" href="#wagerModal" data-toggle="modal" class="btn btn-success">New Game</a>
+      </form>
+      <form id="restart_form" action="/" method="get">
+        <button class="btn btn-inverse">End Game</button>
+      </form>
+    </div>
+  <%end%>
       <%= yield %>
   </div>
   </body>
@@ -77,8 +63,7 @@
     <form name="newround_wager" method="post" action="/newround">
       <div id="wager-div" class="input-append input-prepend">
         <span class="add-on">$</span>
-        <input class="input-small" id="input-append input-prepend" type="text" name="wager">
-        <span class="add-on">.00</span>
+        <input class="input-small" id="input-append input-prepend" type="text" name="wager" autofocus>
       </div>
       <br>
       <button type='submit' class="btn btn-large btn-danger">START!</button>

@@ -4,11 +4,11 @@
     <%if session[:player_stand] %>
       <p>Totals: <%= evaluate_hand(session[:dealer_hand])%></p>
       <% session[:dealer_hand].each do |card| %>
-        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_") %>.jpg">
+        <img class="img-polaroid" alt="card" height="64" width="92.8" src="/images/cards/<%= card.join("_") %>.jpg">
       <%end%>
     <%else%>
-      <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/cover.jpg">
-      <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= session[:dealer_hand][0].join("_") %>.jpg">
+      <img class="img-polaroid" alt="card" height="64" width="92.8" src="/images/cards/cover.jpg">
+      <img class="img-polaroid" alt="card" height="64" width="92.8" src="/images/cards/<%= session[:dealer_hand][0].join("_") %>.jpg">
     <%end%>
   </div>
 
@@ -16,7 +16,7 @@
     <h3><%= session[:player] %>'s hand: </h3>
       <p>Totals: <%= evaluate_hand(session[:player_hand])%></p>
       <% session[:player_hand].each do |card| %>
-        <img class="img-polaroid" alt="card" height="80" width="116" src="/images/cards/<%= card.join("_") %>.jpg">
+        <img class="img-polaroid" alt="card" height="64" width="92.8" src="/images/cards/<%= card.join("_") %>.jpg">
       <% end %>
     <%if @scores == false %>
       <p style="padding-top: 5px;">Wagering <b>$<%=session[:wager]%></b> this round, with <b>$<%=session[:bankroll]%></b> in the bank.</p>
@@ -24,12 +24,12 @@
   </div>
 
   <% if session[:player_buttons] %>
-    <div id="controls" class="offset1">
+    <div id="controls">
       <form id="hit_form" action="/game/player/hit" method="post">
-        <button id='hit_button' class="btn btn-primary btn-large" href="">HIT</button>
+        <button id='hit_button' class="btn btn-primary" href=""><b>HIT</b></button>
       </form>
       <form id="stay_form" action="/game/player/stay" method="post">
-        <button id='stay_button' class="btn btn-warning btn-large" href="">STAY</button>
+        <button id='stay_button' class="btn btn-warning" href=""><b>STAY</b></button>
       </form>
     </div>
   <% end %>
