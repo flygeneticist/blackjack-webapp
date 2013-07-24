@@ -42,10 +42,33 @@ helpers do
     settle_game
   end
 
+  def new_round_setup
+    session[:dealer_hand] = []
+    session[:player_hand] = []
+    session[:player_hand] << session[:deck].pop
+    session[:dealer_hand] << session[:deck].pop
+    session[:player_hand] << session[:deck].pop
+    session[:dealer_hand] << session[:deck].pop
+    session[:player_stand] = false
+    session[:dealer_stand] = false
+    session[:player_buttons] = true
+    session[:dealer_finalvalue] = 0
+    session[:player_finalvalue] = 0
+    redirect "/game"
+  end
+
+  def wager_check
+    if session[:bankroll] >= session[:wager]
+      # do something?
+    else
+      # throw up an error
+    end
+  end
+
   def kick_broke_player
     if session[:bankroll] <= 0
       session.clear
-      redirect "/gameover"
+      erb :gameover
     else
       erb :game
     end
@@ -108,40 +131,27 @@ post "/" do # set up game vars and the deck
   session[:minbid] = params[:minbid].to_i
   session[:maxbid] = params[:maxbid].to_i
   session[:bankroll] = params[:bankroll].to_i
+  session[:wager] = params[:wager].to_i
+  wager_check
   session[:playercount] = params[:playercount].to_i
   session[:player] = params[:player]
-  session[:wager] = params[:wager].to_i # setup initial wager
   session[:card_faces] = [2,3,4,5,6,7,8,9,10,'jack','queen','king','ace']
   session[:card_suits] = ['clubs','diamonds','hearts','spades']
   session[:deck] = session[:card_suits].product(session[:card_faces])
   session[:deck] = session[:deck].shuffle
   session[:round_counter] = 1 # track # rounds played before refreshing the deck
-  redirect "/newround"
+  new_round_setup
 end
 
 post "/newround" do
   session[:wager] = params[:wager].to_i
+  wager_check
   session[:round_counter] += 1
   if session[:round_counter] = 6
     session[:deck] = session[:card_suits].product(session[:card_faces])
     session[:deck] = session[:deck].shuffle
   end
-  redirect "/newround"
-end
-
-get "/newround" do
-  session[:dealer_hand] = []
-  session[:player_hand] = []
-  session[:player_hand] << session[:deck].pop
-  session[:dealer_hand] << session[:deck].pop
-  session[:player_hand] << session[:deck].pop
-  session[:dealer_hand] << session[:deck].pop
-  session[:player_stand] = false
-  session[:dealer_stand] = false
-  session[:player_buttons] = true
-  session[:dealer_finalvalue] = 0
-  session[:player_finalvalue] = 0
-  redirect "/game"
+  new_round_setup
 end
 
 get "/game" do

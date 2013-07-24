@@ -59,7 +59,8 @@
     <h3 id="wagerModalLabel">New Round</h3>
   </div>
   <div class="modal-body">
-    <h4>New Wager: </h4>
+    <h4><%= session[:player] %> has <b>$<%=session[:bankroll]%></b> in the bank.</h4>
+    <h4 style="padding-top: 10px;">New Wager: </h4>
     <form name="newround_wager" method="post" action="/newround">
       <div id="wager-div" class="input-append input-prepend">
         <span class="add-on">$</span>

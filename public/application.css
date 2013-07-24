@@ -28,6 +28,19 @@ dt:hover {
   background-position: 0 -32px;
 }
 
+form#gamesettings div {
+  display: inline-block;
+  width: 200px;
+}
+
+#player-name {
+  margin: 0px 75px 0px 25px;
+}
+
+#starting-bankroll {
+  margin: 0px 75px 0px 25px;
+}
+
 #home_picture {
   margin: 10px 0px 10px 0px;
 }
