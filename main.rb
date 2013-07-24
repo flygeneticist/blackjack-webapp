@@ -31,9 +31,56 @@ helpers do
     end
     value
   end
+
+  def dealer_logic
+    if evaluate_hand(session[:dealer_hand]) < 17
+      redirect "/game/dealer/hit"
+    elsif evaluate_hand(session[:dealer_hand]) >= 17 && evaluate_hand(session[:dealer_hand]) <= 21
+      session[:dealer_stand] = true
+      session[:dealer_finalvalue] = evaluate_hand(session[:dealer_hand])
+    end
+    settle_game
+  end
+
+  def kick_broke_player
+    if session[:bankroll] <= 0
+      session.clear
+      redirect "/gameover"
+    else
+      erb :game
+    end
+  end
+
+  def settle_game
+    @scores = true
+    if @special == true
+      session[:wager] = (1.5 * session[:wager]).to_i
+      session[:bankroll] += session[:wager]
+    else
+      if session[:dealer_finalvalue] > 21 && session[:player_finalvalue] <= 21
+        @player_results, @dealer_results = "won", "busted"
+        session[:bankroll] += session[:wager]
+      elsif session[:player_finalvalue] > 21
+        @player_results, @dealer_results = "busted and lost", "won"
+        session[:bankroll] -= session[:wager]
+      else
+        if session[:dealer_finalvalue] > session[:player_finalvalue]
+          @player_results, @dealer_results = "lost", "won"
+          session[:bankroll] -= session[:wager]
+        elsif session[:dealer_finalvalue] < session[:player_finalvalue]
+          @player_results, @dealer_results = "won", "lost"
+          session[:bankroll] += session[:wager]
+        else
+          @player_results, @dealer_results = "tied the dealer and pushed for", "tied #{session[:player]}"
+        end
+      end
+    end
+    kick_broke_player
+  end
 end
 
 get "/" do
+  session.clear
   erb :home
 end
 
@@ -53,9 +100,8 @@ get "/botwarning" do
   erb :botwarning
 end
 
-get '/logout' do # clear cookies after game is ended
-  session.clear
-  redirect "/"
+get '/gameover' do # clear cookies after game is ended
+  erb :gameover
 end
 
 post "/" do # set up game vars and the deck
@@ -109,9 +155,10 @@ post "/game/player/hit" do
     @error = session[:player]
     session[:player_buttons] = false
     session[:player_finalvalue] = evaluate_hand(session[:player_hand])
-    redirect "/game/settle"
+    settle_game
+  else
+    erb :game
   end
-  erb :game
 end
 
 post "/game/player/stay" do
@@ -120,21 +167,10 @@ post "/game/player/stay" do
   session[:player_buttons] = false
   if session[:player_hand].length == 2 && session[:player_finalvalue] == 21
       @special = true
-      redirect "/game/settle"
+      settle_game
   else
-      redirect "/game/dealer"
+      dealer_logic
   end
-end
-
-get "/game/dealer" do
-  if evaluate_hand(session[:dealer_hand]) < 17
-    redirect "/game/dealer/hit"
-  elsif evaluate_hand(session[:dealer_hand]) >= 17 && evaluate_hand(session[:dealer_hand]) <= 21
-    session[:dealer_stand] = true
-    session[:dealer_finalvalue] = evaluate_hand(session[:dealer_hand])
-    redirect "/game/settle"
-  end
-  redirect "/game/settle"
 end
 
 get "/game/dealer/hit" do
@@ -143,32 +179,5 @@ get "/game/dealer/hit" do
     @error = session[:dealer]
   end
   erb :game
-  redirect "/game/dealer"
-end
-
-get "/game/settle" do
-  @scores = true
-  if @special == true
-    session[:wager] = (1.5 * session[:wager]).to_i
-    session[:bankroll] += session[:wager]
-  else
-    if session[:dealer_finalvalue] > 21 && session[:player_finalvalue] <= 21
-      @player_results, @dealer_results = "won", "busted"
-      session[:bankroll] += session[:wager]
-    elsif session[:player_finalvalue] > 21
-      @player_results, @dealer_results = "busted and lost", "won"
-      session[:bankroll] -= session[:wager]
-    else
-      if session[:dealer_finalvalue] > session[:player_finalvalue]
-        @player_results, @dealer_results = "lost", "won"
-        session[:bankroll] -= session[:wager]
-      elsif session[:dealer_finalvalue] < session[:player_finalvalue]
-        @player_results, @dealer_results = "won", "lost"
-        session[:bankroll] += session[:wager]
-      else
-        @player_results, @dealer_results = "tied the dealer and pushed for", "tied #{session[:player]}"
-      end
-    end
-  end
-  erb :game
+  dealer_logic
 end

@@ -5,6 +5,28 @@ input {
   -moz-border-radius:4px;
   -web-kit-border-radius:4px;
 }
+dl {
+  display: block;
+}
+
+dt {
+  color: #268bd2;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 0 1em 0;
+  padding: 0 0 0 25px;
+  line-height: 16px;
+}
+
+dd {
+  margin: 0 0 1em 0;
+  padding: 0 0 0 50px;
+}
+
+dt:hover {
+  color: #2aa198;
+  background-position: 0 -32px;
+}
 
 #home_picture {
   margin: 10px 0px 10px 0px;
