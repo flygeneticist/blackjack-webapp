@@ -4,9 +4,9 @@
     <title>Blackjack!</title>
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/application.css">
-    <script src="/jquery-2.0.3.min.js"></script>
-    <script src="/misc.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/misc.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
   </head>
 
   <body style="padding-top: 50px;">
@@ -15,7 +15,7 @@
       <div class="navbar-inner">
         <div class="container">
             <ul class="nav">
-              <li><a href="/logout">Home</a></li>
+              <li><a href="/">Home</a></li>
               <li><a href="/rules">Rules</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="/contact">Contact</a></li>
@@ -40,7 +40,7 @@
     <% end %>
     <h4 style="margin-bottom: 5px;">What do you want to do next?</h4>
       <form id="newround_form">
-        <a id="newround" role="button" href="#wagerModal" data-toggle="modal" class="btn btn-success">New Game</a>
+        <a id="newround" role="button" href="#wagerModal" data-toggle="modal" class="btn btn-success">Next Hand</a>
       </form>
       <form id="restart_form" action="/" method="get">
         <button class="btn btn-inverse">End Game</button>
