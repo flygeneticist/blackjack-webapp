@@ -30,15 +30,19 @@ dt:hover {
 
 form#gamesettings div {
   display: inline-block;
-  width: 200px;
+  width: 190px;
 }
 
 #player-name {
-  margin: 0px 75px 0px 25px;
+  margin: 0px 75px 0px 30px;
 }
 
 #starting-bankroll {
   margin: 0px 75px 0px 25px;
+}
+
+#start-button {
+  margin: 20px 0px 0px 190px;
 }
 
 #home_picture {
