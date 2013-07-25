@@ -4,8 +4,8 @@
     <title>Blackjack!</title>
     <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/application.css">
-    <script type="text/javascript" src="/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/misc.js"></script>
+    <script type="text/javascript" src="/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
   </head>
 
@@ -61,7 +61,7 @@
   <div class="modal-body">
     <h4><%= session[:player] %> has <b>$<%=session[:bankroll]%></b> in the bank.</h4>
     <h4 style="padding-top: 10px;">New Wager: </h4>
-    <form name="newround_wager" method="post" action="/newround">
+    <form name="newround_wager" onsubmit="return validateWagerForm()" method="post" action="/newround">
       <div id="wager-div" class="input-append input-prepend">
         <span class="add-on">$</span>
         <input class="input-small" id="input-append input-prepend" type="text" name="wager" autofocus>

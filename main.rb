@@ -57,18 +57,10 @@ helpers do
     redirect "/game"
   end
 
-  def wager_check
-    if session[:bankroll] >= session[:wager]
-      # do something?
-    else
-      # throw up an error
-    end
-  end
-
   def kick_broke_player
     if session[:bankroll] <= 0
       session.clear
-      erb :gameover
+      redirect '/gameover'
     else
       erb :game
     end
@@ -145,7 +137,6 @@ end
 
 post "/newround" do
   session[:wager] = params[:wager].to_i
-  wager_check
   session[:round_counter] += 1
   if session[:round_counter] = 6
     session[:deck] = session[:card_suits].product(session[:card_faces])

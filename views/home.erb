@@ -23,7 +23,7 @@
     <h3 id="nameModalLabel">Game Settings</h3>
   </div>
   <div class="modal-body">
-    <form id="gamesettings" name="gamesettings" method="post" action="/">
+    <form id="gamesettings" name="gamesettings" onSubmit="return validateNewPlayerForm()"method="post" action="/">
       <div id="player-name">
         <h6>Player Name:</h6>
         Player 1 <input class="input-small" type="text" name="player" placeholder="Name"><br>
@@ -67,7 +67,8 @@
       <div id="wager-input" class="input-append input-prepend">
         <h6>Initial Wager</h6>
         <span class="add-on">$</span>
-        <input class="input-small" id="input-append input-prepend" type="text" name="wager">
+        <input class="input-small" id="input-append input-prepend" type="text" name="wager" placeholder="0">
+        <input type="hidden" name="bankroll" value=<%=session[:bankroll]%>>
       </div>
       <span id="start_button">
         <div style="margin: 20px 0px 0px 190px;">
