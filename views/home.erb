@@ -24,36 +24,11 @@
   </div>
   <div class="modal-body">
     <form id="gamesettings" name="gamesettings" onSubmit="return validateNewPlayerForm()"method="post" action="/">
+    <div id="left-half-form">
       <div id="player-name">
         <h6>Player Name:</h6>
-        Player 1 <input class="input-small" type="text" name="player" placeholder="Name"><br>
-        <a id="add" href="#">Add</a> / <a id="remove" href="#">Remove</a>
-        <p>*(Add/Delete Not Working Yet!)</p>
+          <input class="input" type="text" name="player" placeholder="Name">
       </div>
-      <div id="table-limits">
-        <div id="min-limit" class="input-prepend">
-          <h6>Minimum table bid: </h6>
-          <span class="add-on">$</span>
-          <select class="input-small" id="input-prepend" name="minbid" autofocus>
-            <option>1</option>
-            <option>5</option>
-            <option>10</option>
-            <option>25</option>
-            <option>100</option>
-          </select>
-        </div>
-        <div id="max-limit" class="input-prepend">
-          <h6>Maximum table bid: </h6>
-          <span class="add-on">$</span>
-          <select class="input-small" id="input-prepend" name="maxbid">
-            <option>100</option>
-            <option>250</option>
-            <option>500</option>
-            <option>1000</option>
-          </select>
-        </div>
-      </div>
-      <br>
       <div id="starting-bankroll" class="input-prepend">
         <h6>Starting bankroll:</h6>
         <span class="add-on">$</span>
@@ -70,11 +45,38 @@
         <input class="input-small" id="input-append input-prepend" type="text" name="wager" placeholder="0">
         <input type="hidden" name="bankroll" value=<%=session[:bankroll]%>>
       </div>
+    </div>
+
+    <div id="table-limits">
+      <div id="min-limit" class="input-prepend">
+        <h6>Minimum table bid: </h6>
+        <span class="add-on">$</span>
+        <select class="input-small" id="input-prepend" name="minbid" autofocus>
+          <option>1</option>
+          <option>5</option>
+          <option>10</option>
+          <option>25</option>
+          <option>100</option>
+        </select>
+      </div>
+      <div id="max-limit" class="input-prepend">
+        <h6>Maximum table bid: </h6>
+        <span class="add-on">$</span>
+        <select class="input-small" id="input-prepend" name="maxbid">
+          <option>100</option>
+          <option>250</option>
+          <option>500</option>
+          <option>1000</option>
+        </select>
+      </div>
+    </div>
+
       <span id="start_button">
         <div style="margin: 20px 0px 0px 190px;">
           <button type='submit' class="btn btn-large btn-danger">START!</button>
         </div>
       </span>
+
     </form>
   </div>
 </div>

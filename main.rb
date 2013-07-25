@@ -124,7 +124,6 @@ post "/" do # set up game vars and the deck
   session[:maxbid] = params[:maxbid].to_i
   session[:bankroll] = params[:bankroll].to_i
   session[:wager] = params[:wager].to_i
-  wager_check
   session[:playercount] = params[:playercount].to_i
   session[:player] = params[:player]
   session[:card_faces] = [2,3,4,5,6,7,8,9,10,'jack','queen','king','ace']

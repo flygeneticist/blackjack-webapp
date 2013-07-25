@@ -31,14 +31,8 @@ dt:hover {
 form#gamesettings div {
   display: inline-block;
   width: 190px;
-}
-
-#player-name {
-  margin: 0px 75px 0px 30px;
-}
-
-#starting-bankroll {
-  margin: 0px 75px 0px 25px;
+  vertical-align: top;
+  margin-left: 40px;
 }
 
 #start-button {
