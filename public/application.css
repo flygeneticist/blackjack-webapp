@@ -12,7 +12,6 @@ dl {
 dt {
   color: #268bd2;
   font-weight: bold;
-  cursor: pointer;
   margin: 0 0 1em 0;
   padding: 0 0 0 25px;
   line-height: 16px;
@@ -99,4 +98,8 @@ div#player_hand{
 
 .hero-unit {
 padding: 50px;
+}
+
+.hero-unit p {
+  margin-bottom: 25px;
 }

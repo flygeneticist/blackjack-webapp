@@ -59,13 +59,17 @@
     <h3 id="wagerModalLabel">New Round</h3>
   </div>
   <div class="modal-body">
-    <h4><%= session[:player] %> has <b>$<%=session[:bankroll]%></b> in the bank.</h4>
-    <h4 style="padding-top: 10px;">New Wager: </h4>
+    <h3><%= session[:player] %> has $<%=session[:bankroll]%> in the bank.</h3>
+    <h4>Minimum bid allowed: $<%=session[:minbid]%></h4>
+    <h4>Maximum bid allowed: $<%=session[:maxbid]%></h4>
+    <h4 style="padding-top: 15px;">New Wager: </h4>
     <form name="newround_wager" onsubmit="return validateWagerForm()" method="post" action="/newround">
       <div id="wager-div" class="input-append input-prepend">
         <span class="add-on">$</span>
         <input class="input-small" id="input-append input-prepend" type="text" name="wager" autofocus>
         <input type="hidden" name="secret-bankroll" value='<%=session[:bankroll]%>'>
+        <input type="hidden" name="minbid" value='<%=session[:minbid]%>'>
+        <input type="hidden" name="maxbid" value='<%=session[:maxbid]%>'>
       </div>
       <br>
       <button type='submit' class="btn btn-large btn-danger">START!</button>
