@@ -1,8 +1,8 @@
 function validateWagerForm()
 {
-var wager=document.forms["newround_wager"]["bankroll"].value;
+var bankroll=document.forms["newround_wager"]["secret-bankroll"].value;
 var wager=document.forms["newround_wager"]["wager"].value;
-if (wager==null || wager=="" || wager==0 || wager>bankroll)
+if (wager==null || wager=="" || wager==0 || (bankroll-wager) < 0)
   {
   alert("Wager must not be blank, zero, or greater than your bankroll!");
   return false;
@@ -20,7 +20,7 @@ if (player==null || player=="")
   alert("Please enter a player name!");
   return false;
   }
-if (wager==null || wager=="" || wager==0 || wager>bankroll)
+if (wager==null || wager=="" || wager==0 || (bankroll-wager) < 0)
   {
   alert("Wager must not be blank, zero, or greater than your bankroll!");
   return false;

@@ -65,6 +65,7 @@
       <div id="wager-div" class="input-append input-prepend">
         <span class="add-on">$</span>
         <input class="input-small" id="input-append input-prepend" type="text" name="wager" autofocus>
+        <input type="hidden" name="secret-bankroll" value='<%=session[:bankroll]%>'>
       </div>
       <br>
       <button type='submit' class="btn btn-large btn-danger">START!</button>
