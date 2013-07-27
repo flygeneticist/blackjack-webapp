@@ -26,10 +26,10 @@
   <% if session[:player_buttons] %>
     <div id="controls">
       <form id="hit_form" action="/game/player/hit" method="post">
-        <button id='hit_button' class="btn btn-primary" href=""><b>HIT</b></button>
+        <button id='hit_button' class="btn btn-primary" type="submit"><b>HIT</b></button>
       </form>
       <form id="stay_form" action="/game/player/stay" method="post">
-        <button id='stay_button' class="btn btn-warning" href=""><b>STAY</b></button>
+        <button id='stay_button' class="btn btn-warning" type="submit"><b>STAY</b></button>
       </form>
     </div>
   <% end %>

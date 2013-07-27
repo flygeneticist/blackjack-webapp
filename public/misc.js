@@ -48,3 +48,16 @@ $(function(){
 });
 
 // TEST CODE BEYOND THIS POINT
+$(document).on("click","form#hit_form button", function(){
+    alert("HELP!");
+
+    $.ajax ({
+      type: "POST"
+      url: "/game/player/hit"
+    }).done(function(msg){
+      $("#player-hand").replaceWith(msg)
+    });
+
+    return false;
+  });
+}

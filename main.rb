@@ -137,7 +137,8 @@ end
 post "/newround" do
   session[:wager] = params[:wager].to_i
   session[:round_counter] += 1
-  if session[:round_counter] = 6
+  if session[:round_counter] = 5 # setup fresh deck
+    session[:round_counter] = 0
     session[:deck] = session[:card_suits].product(session[:card_faces])
     session[:deck] = session[:deck].shuffle
   end
